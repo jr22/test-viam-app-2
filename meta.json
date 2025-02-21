@@ -1,0 +1,7 @@
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "julia-test:viam-test-app-2",
+  "visibility": "private",
+  "url": "",
+  "description": "Modular arm component: my-model"
+}
