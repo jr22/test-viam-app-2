@@ -1,30 +1,29 @@
 import * as VIAM from '@viamrobotics/sdk';
 // import Cookies from 'js-cookie'; 
 
-let apiKeyId = '';
-let apiKeySecret = '';
-let machineId = '';
+let apiKeyId = localStorage.getItem('api_key_id') || '';
+let apiKeySecret = localStorage.getItem('api_key_secret') || '';
+let machineId = localStorage.getItem('machine_id') || '';
 
-window.addEventListener('message', async (event) => {
-    if (event.data.data.api_key_id) {
-        apiKeyId = event.data.data.api_key_id;
-    }
-    if (event.data.data.api_key_secret) {
-        apiKeySecret = event.data.data.api_key_secret;
-    }
-    if (event.data.data.machine_id) {
-        machineId = event.data.data.machine_id;
-    }
-    const client = await connect();
-        renderMachineDetails(client);
-});
+console.log(`apiKeyId: ${apiKeyId}, apiKeySecret: ${apiKeySecret}, machineId: ${machineId}`);
+
+// window.addEventListener('message', async (event) => {
+//     if (event.data.data.api_key_id) {
+//         apiKeyId = event.data.data.api_key_id;
+//     }
+//     if (event.data.data.api_key_secret) {
+//         apiKeySecret = event.data.data.api_key_secret;
+//     }
+//     if (event.data.data.machine_id) {
+//         machineId = event.data.data.machine_id;
+//     }
+//     const client = await connect();
+//         renderMachineDetails(client);
+// });
 
 document.addEventListener('DOMContentLoaded', async () => {
-    try {
-    window.parent.postMessage({ type: 'ready' }, '*');
-    } catch (error) {
-        console.error('Failed to connect:', error);
-    }
+    const client = await connect();
+    renderMachineDetails(client);
 });
 
 async function connect(): Promise<VIAM.ViamClient> {

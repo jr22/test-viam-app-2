@@ -1,7 +1,16 @@
 {
   "$schema": "https://dl.viam.dev/module.schema.json",
-  "module_id": "julia-test:viam-test-app-2",
-  "visibility": "private",
+  "module_id": "julia-test:viam-test-app-3",
+  "visibility": "public",
   "url": "",
-  "description": "Modular arm component: my-model"
+  "type": "module",
+  "applications": [
+    {
+      "name": "julia-random-test",
+      "entrypoint": "dist/index.html",
+      "type": "single_machine"
+    }
+  ],
+  "description": "Modular arm component: my-model",
+  "entrypoint": "dist/index.html"
 }
